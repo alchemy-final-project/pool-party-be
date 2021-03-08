@@ -3,7 +3,8 @@ DROP TABLE IF EXISTS tenants CASCADE;
 DROP TABLE IF EXISTS transactions;
 
 CREATE TABLE owners (
-    connected_acct_id VARCHAR PRIMARY KEY NOT NULL,
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    connected_acct_id VARCHAR NOT NULL,
     property_address VARCHAR NOT NULL
 );
 
@@ -13,15 +14,15 @@ CREATE TABLE tenants (
     email VARCHAR NOT NULL,
     password VARCHAR NOT NULL,
     property_address VARCHAR NOT NULL,
-    connected_acct_id VARCHAR NOT NULL,
+    owner_id BIGINT REFERENCES owners(id),
     -- payment_method_id VARCHAR NOT NULL,
     monthly_cost INTEGER NOT NULL
 );
 
 CREATE TABLE transactions (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    connected_acct_id VARCHAR REFERENCES owners(connected_acct_id) NOT NULL,
-    tenant_id BIGINT REFERENCES tenants(id) NOT NULL,
+    owner_id BIGINT REFERENCES owners(id),
+    tenant_id BIGINT REFERENCES tenants(id),
     payment_method_id VARCHAR NOT NULL,
     payment_intent_id VARCHAR NOT NULL,
     rentYear INTEGER NOT NULL,
