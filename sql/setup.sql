@@ -12,7 +12,7 @@ CREATE TABLE tenants (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     name TEXT,
     email VARCHAR NOT NULL,
-    password VARCHAR NOT NULL,
+    password_hash VARCHAR NOT NULL,
     property_address VARCHAR NOT NULL,
     owner_id BIGINT REFERENCES owners(id),
     -- payment_method_id VARCHAR NOT NULL,
