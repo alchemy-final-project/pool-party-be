@@ -25,8 +25,8 @@ CREATE TABLE transactions (
     tenant_id BIGINT REFERENCES tenants(id),
     payment_method_id VARCHAR NOT NULL,
     payment_intent_id VARCHAR NOT NULL,
-    rentYear INTEGER NOT NULL,
-    rentMonth INTEGER NOT NULL,
+    rent_year INTEGER NOT NULL,
+    rent_month INTEGER NOT NULL,
     amount INTEGER NOT NULL,
     payment_confirmed BOOLEAN NOT NULL
 );
