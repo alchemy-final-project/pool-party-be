@@ -11,7 +11,7 @@ const confirmAttempt = async() => {
     { payment_method: 'pm_1IRggFAlZQgGODSJJXdKd2QR' }
   );
 
-  console.log(response);
+  //console.log(response);
 };
 confirmAttempt();
 
